@@ -1,0 +1,36 @@
+# installation guide for Sync experiment - Windows
+
+# 1. on root, install miniconda from https://docs.conda.io/en/latest/miniconda.html 
+
+# if you do not know where conda is installed - type in terminal:
+
+where conda
+
+# 2. make sure conda is configured in (search-advanced settings)--> enviorment variables --> edit path (windows 10 bug)
+ 
+# usually it will be found here, add all 4 paths after filling in the correct path (add your user) 
+# C:\Users\YourUserNameHere\anaconda3
+# C:\Users\YourUserNameHere\anaconda3\Library\bin
+# C:\Users\YourUserNameHere\anaconda3\Scripts
+# C:\Users\YourUserNameHere\anaconda3\envs
+
+# 3. download  yml file at https://raw.githubusercontent.com/psychopy/psychopy/master/conda/psychopy-env.yml
+#  and put in 'SyncForrestSync' folder
+
+# 4. create enviorment (run lines in command prompt):
+
+cd pathToExperimentFolder\SyncForrestSync
+conda env create -n psychopy -f psychopy-env.yml
+
+# 5. when install is done, run:
+conda init psychopy
+
+# close command line kernel, open anew and run
+conda activate psychopy
+
+# 6. install missing package 'dataclasses' in enviorment
+pip install dataclasses
+
+# move to folder run
+cd C:\Users\pathToExpFolder\SyncForrestSync\multibuild\v1.1
+python main.py
