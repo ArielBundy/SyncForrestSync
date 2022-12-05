@@ -1,29 +1,32 @@
 # installation guide for Sync experiment - Windows
+ 
+# (one can download the project with ' git clone https://github.com/ArielBundy/SyncForrestSync.git ',
+# if git is not installed - type ' conda install -c anaconda git ' in terminal)
 
 # 1. on root, install miniconda from https://docs.conda.io/en/latest/miniconda.html 
 
 # if you do not know where conda is installed - type in terminal:
-
 where conda
 
-# 2. make sure conda is configured in (search-advanced settings)--> enviorment variables --> edit path (windows 10 bug)
+# 2. make sure conda is configured in search -> view advanced system settings -> enviornment variables -> path -> edit
  
-# usually it will be found here, add all 4 paths after filling in the correct path (add your user) 
+# usually it will be found in the first path below, add all 4 paths after filling in 'YourUserName' 
 # C:\Users\YourUserNameHere\anaconda3
 # C:\Users\YourUserNameHere\anaconda3\Library\bin
 # C:\Users\YourUserNameHere\anaconda3\Scripts
 # C:\Users\YourUserNameHere\anaconda3\envs
 
 # 3. download  yml file at https://raw.githubusercontent.com/psychopy/psychopy/master/conda/psychopy-env.yml
-#  and put in 'SyncForrestSync' folder
+#  and put in 'SyncForrestSync' folder, make sure it is saved as yml file!
 
 # 4. create enviorment (run lines in command prompt):
 
 cd pathToExperimentFolder\SyncForrestSync
 conda env create -n psychopy -f psychopy-env.yml
+# last step might take a few minutes
 
 # 5. when install is done, run:
-conda init psychopy
+conda init
 
 # close command line kernel, open anew and run
 conda activate psychopy
