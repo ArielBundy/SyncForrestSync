@@ -292,7 +292,7 @@ def demographics():
     #log_gui.addField("Name:")
     log_gui.addField("Age:")
     log_gui.addField("Gender:", choices=["M","F","Other"])
-    log_gui.addField("Have you seen the movie '500 days of summer' before:", choices=["Y","N"])
+    log_gui.addField("Have you seen the movie 'Forrest Gump' before:", choices=["Y","N"])
     log_gui.addField("Date of birth (dd/mm/yyyy):")
     #log_gui.addField("Do you have any experience with behavioral coding:", choices=["Y","N"])
     log_gui.addField("Educational Level:",choices=["Highschool","BA/BSc","MA/MSc","PhD","Engineering Degree"])
