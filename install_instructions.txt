@@ -19,11 +19,10 @@ where conda
 # 3. download  yml file at https://raw.githubusercontent.com/psychopy/psychopy/master/conda/psychopy-env.yml
 #  and put in 'SyncForrestSync' folder, make sure it is saved as yml file!
 
-# 4. create enviorment (run lines in command prompt):
+# 4. create enviorment (run lines in command prompt), this might take a few minutes:
 
 cd pathToExperimentFolder\SyncForrestSync
 conda env create -n psychopy -f psychopy-env.yml
-# last step might take a few minutes
 
 # 5. when install is done, run:
 conda init
