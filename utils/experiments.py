@@ -115,12 +115,12 @@ def sync_experiment(user_data, exp_name):
 
     log = ""
     #log += f"Name,{demographics_data[0]}\n"
+    log += f"Version,1.2\n"
     log += f"Age,{demographics_data[0]}\n"
     log += f"Gender,{demographics_data[1]}\n"
     log += f"Seen,{demographics_data[2]}\n"
     log += f"Birth,{demographics_data[3]}\n"
-    #log += f"Exp_with_coding,{demographics_data[4]}\n"
-    log += f"Education,{demographics_data[5]}\n"
+    log += f"Education,{demographics_data[4]}\n"
     log += f"Movie,{os.path.basename(movie_fname)}\n"
     log += f"Experiment,{exp_name}\n"
     log += f"Tutorial1,{user_data[2]}\n"
@@ -248,7 +248,7 @@ def sync_experiment(user_data, exp_name):
         logger.write(log)
     user_data[1]+=1
 
-
+# the entire function is depricated a we do not use arousel experiment
 def arousal_experiment(user_data, exp_name):
     movie_fname = utils.routines.get_random_movie_if_not_picked()  #select movie
     if movie_fname == None:
@@ -329,7 +329,6 @@ def arousal_experiment(user_data, exp_name):
         if len(event.getKeys(keyList=["q"]))>0:
             break
 
-          
         if mouse.isPressedIn(stop_button):
             paused = True    
                 
