@@ -1,14 +1,19 @@
 # installation guide for Sync experiment - Windows
  
-# (one can download the project with ' git clone https://github.com/ArielBundy/SyncForrestSync.git ',
-# if git is not installed - type ' conda install -c anaconda git ' in terminal or download as zip)
+# (one can download the project by typing in command prompt: 
+git clone https://github.com/ArielBundy/SyncForrestSync.git 
 
-# 1. on root, install miniconda from https://docs.conda.io/en/latest/miniconda.html 
+# if git is not installed - type in command prompt:
+conda install -c anaconda git ' 
 
-# if you do not know where conda is installed - type in terminal:
+# or download as zip file at https://github.com/ArielBundy/SyncForrestSync
+
+# 1. on root, install miniconda from https://docs.conda.io/en/latest/miniconda.html if not already installed
+
+# if you do not know where conda is installed - type in command prompt:
 where conda
 
-# 2. make sure conda is configured in search -> view advanced system settings -> enviornment variables -> path -> edit
+# 2. make sure conda is configured in search -> view advanced system settings -> Enviornment Variables -> path -> edit
  
 # usually it will be found in the first path below, add all 4 paths after filling in 'YourUserName' 
 # C:\Users\YourUserNameHere\anaconda3
@@ -16,27 +21,28 @@ where conda
 # C:\Users\YourUserNameHere\anaconda3\Scripts
 # C:\Users\YourUserNameHere\anaconda3\envs
 
-# 3. download  yml file at https://raw.githubusercontent.com/psychopy/psychopy/master/conda/psychopy-env.yml
-#  and put in 'SyncForrestSync' folder, make sure it is saved as yml file!
+# 3. download yml file at https://raw.githubusercontent.com/psychopy/psychopy/master/conda/psychopy-env.yml
+#    once open in browser: right click -> Save as.. -> save in 'SyncForrestSync' folder
+#    make sure it is saved as yml file!
 
-# 4. create enviorment (run lines in command prompt), this might take a few minutes:
+# 4. run lines in command prompt, creating the enviornment might take a few minutes:
 
 cd pathToExperimentFolder\SyncForrestSync
 conda env create -n psychopy -f psychopy-env.yml
 
-# 5. when install is done, run:
+# 5. when install is done, run in command prompt:
 conda init
 
-# close command line kernel, open anew and run
+# close command line kernel, open anew and run in command prompt:
 conda activate psychopy
 
-# 6. install missing package 'dataclasses' in enviorment
+# 6. install missing package 'dataclasses' within enviornment by typing in command prompt:
 pip install dataclasses
 
 # 7.download stimuli from https://tinyurl.com/forrestStimuli,
-#   create a folder called 'movies' in \SyncForrestSync\multibuild\v1.1\assets ,
+#   create a folder called 'movies' in \SyncForrestSync\multibuild\v1.1\assets 
 #   paste the movies downloaded into the newly created 'movies' folder
 
-# 8. move to folder run
-cd C:\Users\pathToExpFolder\SyncForrestSync\multibuild\v1.1
+# 8. run experiment by typing in command prompt
+cd pathToExperimentFolder\SyncForrestSync\multibuild\v1.1
 python main.py
