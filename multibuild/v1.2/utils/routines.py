@@ -144,6 +144,13 @@ def displayMovie(filename, isFirst, checkFunc):
 
     mouse = event.Mouse(win=win,visible=True)
 
+    #####################################################################
+    # inserted 7.12.22 - stoped_before_time for tutorial skips 
+    
+    global stoped_before_time
+    stoped_before_time = False
+    
+    #####################################################################
     while movie.status != constants.FINISHED:
         frame_time = movie.getCurrentFrameTime()
 
@@ -165,7 +172,18 @@ def displayMovie(filename, isFirst, checkFunc):
                 circle.pos = (300,-450)
 
         checkFunc(int(frame_time), circle)
-
+        
+    ##################################################################################################    
+    # inserted 7.12.22 - tutorial skip using 'q' 
+        if len(event.getKeys(keyList=["q"]))>0:
+            stoped_before_time = True
+            secondMovieSuccess = secondMovieSuccess | (2 ** 3)
+            break
+            
+    if stoped_before_time:
+        time.sleep(1)
+    ##################################################################################################
+    
     movie.stop()
     win.close()
 
@@ -246,24 +264,27 @@ def select_movie():
 
     
 def specify_experiment_phase(demographics_data):
+    
+    # changes made 7.12.22 - disabled 'valance\arousel' in Testing mode.
+    # uncomment arousal_button and it's grid if needed
     root = Tk()
-    root.title("Social Synchrony Exp v1.1")
+    root.title("Social Synchrony Exp v1.2")
 
     gaze_button = Button(root,text="Gaze Synchrony",width=50,height=2,command=lambda: tutorial("gaze", demographics_data, sync_experiment, "Gaze Synchrony"))
     touch_button = Button(root, text="Touch Synchrony",width=50,height=2,command=lambda: tutorial("touch", demographics_data, sync_experiment, "Touch Synchrony"))
     affect_button = Button(root, text="Affect Synchrony",width=50,height=2,command=lambda: tutorial("affect", demographics_data, sync_experiment, "Affect Synchrony"))
-    arousal_button = Button(root, text="Valence/Arousal",width=50,height=2,command=lambda: tutorial("valance", demographics_data, arousal_experiment, "Valence/Arousal"))
     id_button =  Button(root,text="Identification",width=50,height=2,command=lambda: tutorial("id", demographics_data, sync_experiment, "Identification"))
-    general_sync_button = Button(root,text="General Synchrony",width=50,height=2,command=lambda: tutorial("general", demographics_data, sync_experiment, "General Synchrony"))
+    general_button = Button(root,text="General Synchrony",width=50,height=2,command=lambda: tutorialG("general", demographics_data, sync_experiment, "General Synchrony"))
+    #arousal_button = Button(root, text="Valence/Arousal",width=50,height=2,command=lambda: tutorial("valance", demographics_data, arousal_experiment, "Valence/Arousal"))
     start_over_button = Button(root,text="Start over",width=50,height=2,command=lambda: restart_program())
 
-    gaze_button.grid(row=0,column=0)
-    touch_button.grid(row=1,column=0)
+    gaze_button.grid(row=1,column=0)
     touch_button.grid(row=2,column=0)
-    arousal_button.grid(row=3,column=0)
-    id_button.grid(row=4,column=0)
-    general_sync_button.grid(row=5,column=0)
-    start_over_button.grid(row=6,column=0)
+    affect_button.grid(row=3,column=0)
+    general_button.grid(row=4,column=0)
+    id_button.grid(row=5,column=0)
+    #arousal_button.grid(row=6,column=0)
+    start_over_button.grid(row=0,column=0)
 
     root.mainloop()
 
@@ -276,6 +297,7 @@ def specify_experiment_phase_random(demographics_data):
    # ("id", demographics_data, sync_experiment, "Identification"), \
     ("general", demographics_data, sync_experiment, "General Synchrony")
     ]
+    
     first_choice = random.choice(calls)
     calls.remove(first_choice)
     second_choice = random.choice(calls)
@@ -288,7 +310,6 @@ def specify_experiment_phase_random(demographics_data):
 def demographics():
 
     log_gui = gui.Dlg(title="פרטים אישיים")
-
     log_gui.addField("Age:")
     log_gui.addField("Gender:", choices=["M","F","Other"])
     log_gui.addField("Have you seen the movie 'Forrest Gump' before:", choices=["Y","N"])

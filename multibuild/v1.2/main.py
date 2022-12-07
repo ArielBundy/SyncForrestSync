@@ -31,7 +31,15 @@ if True:
 
 log_data.append(1 if is_success_first else 0)
 log_data.append(1 if is_success_second else 0)
+###########################################################################################################
+# this box controls between Testing the experiment and actually running it
+# Testing = 'specify_experiment_phase'
+# Running = 'specify_experiment_phase_random'
+
+# uncomment the one you need and comment the next below, default is Running:
 
 specify_experiment_phase_random(log_data)
+#specify_experiment_phase(log_data)
+##########################################################################################################
 
 consent("debrief.jpg", False)
