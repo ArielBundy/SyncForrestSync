@@ -49,7 +49,11 @@ def tutorialG(exp, demographics_data, func, exp_name):
         if i==1 or i==3 or i==5: # as explained above, video names will be named as summer(i).mp4
             
             win1 = visual.Window(size=(WIDTH,HEIGHT),units="pix",color=(-1,-1,-1))
+<<<<<<< HEAD
             movie = visual.MovieStim3(win=win1, filename=os.path.join(os.getcwd(),"assets","exmp", "summer"+str(i)+".mkv"))
+=======
+            movie = visual.MovieStim3(win=win1, filename=os.path.join(os.getcwd(),"assets","exmp", "summer"+str(i)+".mp4"))
+>>>>>>> 23523f397a65325f88f39dc2796ab4198b622e88
             movie.size /= 1.2
             movie.size = np.round(movie.size)
             x = 0
