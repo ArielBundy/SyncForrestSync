@@ -1,8 +1,6 @@
-# installation guide for Sync experiment - Windows
- 
+# installation guide for Sync experiment version 1.2 - Windows 
 # (one can download the project by typing in command prompt: 
 git clone https://github.com/ArielBundy/SyncForrestSync.git 
-
 # if git is not installed - type in command prompt:
 conda install -c anaconda git ' 
 
@@ -21,28 +19,24 @@ where conda
 # C:\Users\YourUserNameHere\anaconda3\Scripts
 # C:\Users\YourUserNameHere\anaconda3\envs
 
-# 3. download yml file at https://raw.githubusercontent.com/psychopy/psychopy/master/conda/psychopy-env.yml
-#    once open in browser: right click -> Save as.. -> save in 'SyncForrestSync' folder
-#    make sure it is saved as yml file!
-
-# 4. run lines in command prompt, creating the enviornment might take a few minutes:
+# 3. run lines in command prompt, creating the enviornment might take a few minutes:
 
 cd pathToExperimentFolder\SyncForrestSync
 conda env create -n psychopy -f psychopy-env.yml
 
-# 5. when install is done, run in command prompt:
+# 4. when install is done, run in command prompt:
 conda init
 
 # close command line kernel, open anew and run in command prompt:
 conda activate psychopy
 
-# 6. install missing package 'dataclasses' within enviornment by typing in command prompt:
+# 5. install missing package 'dataclasses' within enviornment by typing in command prompt:
 pip install dataclasses
 
-# 7.download stimuli from https://tinyurl.com/forrestStimuli,
+# 6.download stimuli from https://tinyurl.com/forrestStimuli,
 #   create a folder called 'movies' in \SyncForrestSync\multibuild\v1.1\assets 
 #   paste the movies downloaded into the newly created 'movies' folder
 
-# 8. run experiment by typing in command prompt
+# 7. run experiment by typing in command prompt
 cd pathToExperimentFolder\SyncForrestSync\multibuild\v1.1
 python main.py
