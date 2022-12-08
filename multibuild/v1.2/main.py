@@ -6,7 +6,7 @@ consent("consent1.JPG", False)
 consent("consent2.JPG", False)
 consent("consent3.JPG", True)
 
-log_data = demographics()  #get demographics
+log_data = demographics()  # get demographics
 
 SOUND_TEST_MODE = True
 
@@ -32,16 +32,10 @@ if True:
 log_data.append(1 if is_success_first else 0)
 log_data.append(1 if is_success_second else 0)
 
-###########################################################################################################
-# this box controls between Testing the experiment and actually running it
-# Testing = 'specify_experiment_phase'
-# Running = 'specify_experiment_phase_random'
 # for testing - write 'test' under 'Age' in the demographics gui 
 if log_data[0][0] == 'test': 
     specify_experiment_phase(log_data)
 else:
     specify_experiment_phase_random(log_data)
-
-##########################################################################################################
 
 consent("debrief.jpg", False)
