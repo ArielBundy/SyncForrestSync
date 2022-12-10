@@ -85,7 +85,7 @@ def tutorialG(exp, demographics_data, func, exp_name):
             win.flip()
         
         else: # insert instruction slide
-            time.sleep(1)
+            time.sleep(0.5)
             event.clearEvents()
             slide = visual.ImageStim(win=win,image=picture)
             while True:
