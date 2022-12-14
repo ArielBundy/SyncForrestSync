@@ -274,7 +274,7 @@ def specify_experiment_phase(demographics_data):
     touch_button = Button(root, text="Touch Synchrony",width=50,height=2,command=lambda: tutorial("touch", demographics_data, sync_experiment, "Touch Synchrony"))
     affect_button = Button(root, text="Affect Synchrony",width=50,height=2,command=lambda: tutorial("affect", demographics_data, sync_experiment, "Affect Synchrony"))
     id_button =  Button(root,text="Identification",width=50,height=2,command=lambda: tutorial("id", demographics_data, sync_experiment, "Identification"))
-    general_button = Button(root,text="General Synchrony",width=50,height=2,command=lambda: tutorialG("general", demographics_data, sync_experiment, "General Synchrony"))
+    general_button = Button(root,text="General Synchrony",width=50,height=2,command=lambda: tutorial("general", demographics_data, sync_experiment, "General Synchrony"))
     #arousal_button = Button(root, text="Valence/Arousal",width=50,height=2,command=lambda: tutorial("valance", demographics_data, arousal_experiment, "Valence/Arousal"))
     start_over_button = Button(root,text="Start over",width=50,height=2,command=lambda: restart_program())
 

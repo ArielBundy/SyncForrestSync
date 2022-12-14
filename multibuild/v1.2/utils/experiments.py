@@ -135,27 +135,6 @@ def sync_experiment(user_data, exp_name):
     text = visual.TextStim(win=win,text="Loading experiment movie...")
     text.draw()
     win.flip()
-
-    movie = visual.MovieStim3(win=win,filename=movie_fname)
-    movie.size /= 1.2
-    movie.size = np.round(movie.size)
-    x = 0
-
-    y = win.size[1]/2 - movie.size[1]/1.8
-    movie.pos = (x,y)
-
-    ####### stop and play buttons - commented 7.12.2022
-    #start_image = os.path.join(os.getcwd(), "assets","pics", BUTTONS[0])
-    #stop_image =  os.path.join(os.getcwd(), "assets","pics", BUTTONS[1])
-    
-    #start_button = visual.ImageStim(win=win,
-    #                                image=start_image,
-    #                                pos=(-350,-350), 
-    #                                size=(50,50))
-    #stop_button  = visual.ImageStim(win=win,
-    #                                image=stop_image,
-    #                                pos=(-280,-350),
-    #                                size=(50,50))
     
     line = visual.Line(win=win,
                        lineColor=[1, 1, 1],
@@ -174,7 +153,14 @@ def sync_experiment(user_data, exp_name):
                            edges=128)
     
     mouse = event.Mouse(win=win,visible=False) 
- 
+    
+    movie = visual.MovieStim3(win=win,filename=movie_fname,loop=False)
+    movie.size /= 1.2
+    movie.size = np.round(movie.size)
+    x = 0
+    y = win.size[1]/2 - movie.size[1]/1.8
+    movie.pos = (x,y)
+    
     text.text="Move the slider by moving the mouse\nPress space to begin\nPress q to exit the experiment\n Press p to pause and c to continue"
     text.draw()
     win.flip()
@@ -186,7 +172,7 @@ def sync_experiment(user_data, exp_name):
         win.flip()
         core.wait(1)
         
-    mouse.setPos(newPos=(0, -450))
+    mouse.setPos(newPos=(0, -250))
     mouse.setVisible(0) # hide mouse 
     
     global tages_results
@@ -197,7 +183,8 @@ def sync_experiment(user_data, exp_name):
 
     t = threading.Thread(target = async_logger_sync, args=(movie, circle, mouse))
     t.start()
-
+    
+    movie.play()
     while movie.status != constants.FINISHED:
         #start_button.draw()
         #stop_button.draw()
@@ -209,39 +196,30 @@ def sync_experiment(user_data, exp_name):
             circle.draw()
             movie.draw()
             win.flip()
-    
-        # pause button - disabled
-        #if mouse.isPressedIn(stop_button):
-            #paused = True  
-            
+
         # pause using 'p' on keyboard
         if len(event.getKeys(keyList=["p"]))>0:
             paused = True 
             event.clearEvents()
-        
-        # start button- disabled
-        #if mouse.isPressedIn(start_button): 
-            #paused = False
-            #event.clearEvents()
+        if paused:
+            movie.pause()
             
         # play using 'c' on keyboard    
         if len(event.getKeys(keyList=["c"]))>0:
             paused = False
-            event.clearEvents()
-            
-        if paused:
-            movie.pause()
-        else:
             movie.play()
+            event.clearEvents()
 
         if len(event.getKeys(keyList=["q"]))>0:
             stoped_before_time = True
             event.clearEvents()
+            movie.stop()
             break
 
     if stoped_before_time:
         time.sleep(1)
         log += f"{np.round(movie.getCurrentFrameTime(), 3)},Experiment ended before movie end"
+        
     movie.stop()
     win.close()
 
@@ -257,7 +235,8 @@ def sync_experiment(user_data, exp_name):
     with open(fname,"w") as logger:
         logger.write(log)
     user_data[1]+=1
-
+    
+    
 # the entire function is depricated as we do not use arousel experiment
 def arousal_experiment(user_data, exp_name):
     movie_fname = utils.routines.get_random_movie_if_not_picked()  #select movie
