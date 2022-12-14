@@ -173,7 +173,7 @@ def sync_experiment(user_data, exp_name):
                            fillColor="red",
                            edges=128)
     
-    mouse = event.Mouse(win=win,visible=True) # changed to True
+    mouse = event.Mouse(win=win,visible=False) 
  
     text.text="Move the slider by moving the mouse\nPress space to begin\nPress q to exit the experiment\n Press p to pause and c to continue"
     text.draw()
@@ -187,7 +187,7 @@ def sync_experiment(user_data, exp_name):
         core.wait(1)
         
     mouse.setPos(newPos=(0, -450))
-    #mouse.setVisible(0)
+    mouse.setVisible(0) # hide mouse 
     
     global tages_results
     global paused
@@ -216,7 +216,8 @@ def sync_experiment(user_data, exp_name):
             
         # pause using 'p' on keyboard
         if len(event.getKeys(keyList=["p"]))>0:
-            paused = True    
+            paused = True 
+            event.clearEvents()
         
         # start button- disabled
         #if mouse.isPressedIn(start_button): 
@@ -235,6 +236,7 @@ def sync_experiment(user_data, exp_name):
 
         if len(event.getKeys(keyList=["q"]))>0:
             stoped_before_time = True
+            event.clearEvents()
             break
 
     if stoped_before_time:

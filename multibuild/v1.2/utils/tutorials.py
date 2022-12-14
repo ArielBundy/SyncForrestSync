@@ -28,6 +28,7 @@ def tutorial(exp, demographics_data, func, exp_name):
         func(demographics_data, exp_name)
         win.close()
     else:
+        win.close() #inserted 14.12.2022
         tutorialG(exp, demographics_data, func, exp_name)
         
     
@@ -48,15 +49,14 @@ def tutorialG(exp, demographics_data, func, exp_name):
     for i,picture in enumerate(pictures):
         if i==1 or i==3 or i==5: # as explained above, video names will be named as summer(i).mp4
             
-            win1 = visual.Window(size=(WIDTH,HEIGHT),units="pix",color=(-1,-1,-1))
-            movie = visual.MovieStim3(win=win1, filename=os.path.join(os.getcwd(),"assets","exmp", "summer"+str(i)+".mkv"))
-            #movie = visual.MovieStim3(win=win1, filename=os.path.join(os.getcwd(),"assets","exmp", "summer"+str(i)+".mp4"))
+            movie = visual.MovieStim3(win=win, filename=os.path.join(os.getcwd(),"assets","exmp", "summer"+str(i)+".mkv"))
+            #movie = visual.MovieStim3(win=win, filename=os.path.join(os.getcwd(),"assets","exmp", "summer"+str(i)+".mp4"))
             movie.size /= 1.2
             movie.size = np.round(movie.size)
             x = 0
-            y = win1.size[1]/2 - movie.size[1]/2
+            y = win.size[1]/2 - movie.size[1]/2
             movie.pos = (x,y)
-            mouse = event.Mouse(win=win1,visible=True)
+            mouse = event.Mouse(win=win,visible=True)
     
             global stoped_before_time
             stoped_before_time = False
@@ -67,7 +67,7 @@ def tutorialG(exp, demographics_data, func, exp_name):
             while movie.status != constants.FINISHED:
                 frame_time = movie.getCurrentFrameTime()
                 movie.draw()
-                win1.flip()
+                win.flip()
            
      # tutorial skip using 'q' 
     
@@ -80,9 +80,6 @@ def tutorialG(exp, demographics_data, func, exp_name):
                     break
                     
             movie.stop()
-            win1.flip()
-            win1.close()
-            win.flip()
         
         else: # insert instruction slide
             time.sleep(0.5)
@@ -94,10 +91,9 @@ def tutorialG(exp, demographics_data, func, exp_name):
                 if len(event.getKeys(keyList=["right"])) > 0: #or myMouse.getPressed()[0] == 1:
                     event.clearEvents()
                     break
-            event.clearEvents()
-            
+    win.close()       
     func(demographics_data, exp_name)
-    win.close()
+    
     
  
     

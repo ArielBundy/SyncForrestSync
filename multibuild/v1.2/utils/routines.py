@@ -294,7 +294,7 @@ def specify_experiment_phase_random(demographics_data):
     ("touch", demographics_data, sync_experiment, "Touch Synchrony"), \
     ("affect", demographics_data, sync_experiment, "Affect Synchrony"), \
    # ("valence", demographics_data, arousal_experiment, "Valence/Arousal"), \
-    ("id", demographics_data, sync_experiment, "Identification"), \
+   # ("id", demographics_data, sync_experiment, "Identification"), \
     ("general", demographics_data, sync_experiment, "General Synchrony")
     ]
     
