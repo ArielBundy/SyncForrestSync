@@ -213,7 +213,6 @@ def sync_experiment(user_data, exp_name):
         if len(event.getKeys(keyList=["q"]))>0:
             stoped_before_time = True
             event.clearEvents()
-            movie.stop()
             break
 
     if stoped_before_time:
@@ -247,7 +246,7 @@ def arousal_experiment(user_data, exp_name):
     global log
 
     log = ""
-    #log += f"Name,{demographics_data[0]}\n"
+    log += f"Name,{demographics_data[0]}\n"
     log += f"Age,{demographics_data[0]}\n"
     log += f"Gender,{demographics_data[1]}\n"
     log += f"Seen,{demographics_data[2]}\n"
