@@ -25,7 +25,7 @@ def async_logger_sync(movie, circle, mouse):
     global stoped_before_time
 
     while movie.status != constants.FINISHED:
-        time.sleep(0.2) # changed from 0.1, slower sample rate
+        time.sleep(0.1) # sample at 0.1 Hz
         
         if (mouse.getPos()[0] < 300) and (mouse.getPos()[0] > -300) and not paused and not stoped_before_time:
             circle.pos = (mouse.getPos()[0],-450)
