@@ -25,7 +25,8 @@ def async_logger_sync(movie, circle, mouse):
     global stoped_before_time
 
     while movie.status != constants.FINISHED:
-        time.sleep(0.1)
+        time.sleep(0.2) # changed from 0.1, slower sample rate
+        
         if (mouse.getPos()[0] < 300) and (mouse.getPos()[0] > -300) and not paused and not stoped_before_time:
             circle.pos = (mouse.getPos()[0],-450)
         elif not paused and not stoped_before_time:
@@ -183,7 +184,7 @@ def sync_experiment(user_data, exp_name):
 
     t = threading.Thread(target = async_logger_sync, args=(movie, circle, mouse))
     t.start()
-    
+    win.flip()
     movie.play()
     while movie.status != constants.FINISHED:
         #start_button.draw()
@@ -216,8 +217,8 @@ def sync_experiment(user_data, exp_name):
             break
 
     if stoped_before_time:
-        time.sleep(1)
         log += f"{np.round(movie.getCurrentFrameTime(), 3)},Experiment ended before movie end"
+        time.sleep(1)
         
     movie.stop()
     win.close()
