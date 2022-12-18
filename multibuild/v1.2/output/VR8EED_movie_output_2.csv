@@ -1,0 +1,13 @@
+Version,1.2
+Age,test
+Gender,M
+Seen,Y
+Birth,
+Education,Highschool
+LivesWith,Parents/Siblings
+Movie,fg_av_eng_seg7.mkv
+Experiment,Gaze Synchrony
+Tutorial1,1
+Tutorial2,1
+Time,X
+-0.04,Experiment ended before movie end
