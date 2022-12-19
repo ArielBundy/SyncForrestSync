@@ -176,20 +176,15 @@ def sync_experiment(user_data, exp_name):
     mouse.setPos(newPos=(0, -250))
     mouse.setVisible(0) # hide mouse 
     
-    global tages_results
-    global paused
-    global stoped_before_time
-
+    paused = False
     stoped_before_time = False
 
     t = threading.Thread(target = async_logger_sync, args=(movie, circle, mouse))
     t.start()
     win.flip()
-    movie.play()
+    #movie.play()
+    
     while movie.status != constants.FINISHED:
-        #start_button.draw()
-        #stop_button.draw()
-
         if not paused:
             line.draw()
             left_bar_text.draw()
@@ -201,9 +196,8 @@ def sync_experiment(user_data, exp_name):
         # pause using 'p' on keyboard
         if len(event.getKeys(keyList=["p"]))>0:
             paused = True 
-            event.clearEvents()
-        if paused:
             movie.pause()
+            event.clearEvents()
             
         # play using 'c' on keyboard    
         if len(event.getKeys(keyList=["c"]))>0:
