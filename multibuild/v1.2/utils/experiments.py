@@ -216,7 +216,8 @@ def sync_experiment(user_data, exp_name):
         
     movie.stop()
     win.close()
-
+    time.sleep(1) # added 20.12.22 by Ariel
+    
     random_ascii = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(6))
     fname = os.path.join(os.getcwd(),"output",random_ascii + ("_movie_output_%d.csv" % (user_data[1],)) )
     dir_to_create = os.path.join(os.getcwd(),"output")
