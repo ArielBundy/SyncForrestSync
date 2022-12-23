@@ -3,8 +3,9 @@ Age,100
 Gender,M
 Seen,N
 Birth,13/07/1996
-Education,With spouse
-Movie,fg_av_eng_seg3
+Education,BA
+LivesWith,With spouse
+Movie,fg_av_eng_seg3.mkv
 Experiment,General Synchrony
 Tutorial1,1
 Tutorial2,1
