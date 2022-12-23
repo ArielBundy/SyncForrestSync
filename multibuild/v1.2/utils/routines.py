@@ -58,7 +58,12 @@ def consent(filename, should_checkbox):
         #if len(event.getKeys(keyList=["right"])):
         #    break
         event.clearEvents()
+    
     win.close()
+    # timestamp participant and add as a global
+    from datetime import datetime
+    global TimeStamp
+    TimeStamp = datetime.now().isoformat(timespec='seconds')
 
 firstMovieSuccess = 0
 secondMovieSuccess = 0
@@ -322,7 +327,8 @@ def demographics():
     log_gui.addField("Educational Level:",choices=["Highschool","BA/BSc","MA/MSc","PhD","Engineering Degree"])
     log_gui.addField("You currenly live with",choices=["Parents/Siblings","Dorms/shared flat","With spouse","Alone"])
 
-    log_data = log_gui.show()  
+    log_data = log_gui.show()
+    log_data.append(TimeStamp)
     if log_gui.OK: 
         print(log_data)
     else:

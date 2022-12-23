@@ -112,6 +112,7 @@ def sync_experiment(user_data, exp_name):
         return 
 
     demographics_data = user_data[0]
+    timeStamp = user_data[0][-1]
     global log
 
     log = ""
@@ -127,6 +128,7 @@ def sync_experiment(user_data, exp_name):
     log += f"Experiment,{exp_name}\n"
     log += f"Tutorial1,{user_data[2]}\n"
     log += f"Tutorial2,{user_data[3]}\n"
+    log += f"Consent,{timeStamp}\n"
     log += "Time,X\n"
 
     WIDTH = 1920
