@@ -295,16 +295,16 @@ def specify_experiment_phase(demographics_data):
 
 def specify_experiment_phase_random(demographics_data):
     """
-    as of 20/12/2022, if not in test mode - only gaze and touch experiments will be chosen.
+    as of 29/1/2023, if not in test mode -  only Affect and General experiments will be chosen.
     uncomment any experiment line in order to put them back in random choice.
     """
     calls = [
-    ("gaze", demographics_data, sync_experiment, "Gaze Synchrony"), \
-    ("touch", demographics_data, sync_experiment, "Touch Synchrony"), \
-   # ("affect", demographics_data, sync_experiment, "Affect Synchrony"), \
-   # ("valence", demographics_data, arousal_experiment, "Valence/Arousal"), \
-   # ("id", demographics_data, sync_experiment, "Identification"), \
-   # ("general", demographics_data, sync_experiment, "General Synchrony")
+    #("gaze", demographics_data, sync_experiment, "Gaze Synchrony"), \
+    #("touch", demographics_data, sync_experiment, "Touch Synchrony"), \
+    ("affect", demographics_data, sync_experiment, "Affect Synchrony"), \
+    #("valence", demographics_data, arousal_experiment, "Valence/Arousal"), \
+    #("id", demographics_data, sync_experiment, "Identification"), \
+    ("general", demographics_data, sync_experiment, "General Synchrony")
     ]
     
     first_choice = random.choice(calls)
