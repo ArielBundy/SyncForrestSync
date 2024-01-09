@@ -34,9 +34,9 @@ conda activate psychopy
 pip install dataclasses
 
 # 6.download stimuli from https://tinyurl.com/forrestStimuli,
-#   create a folder called 'movies' in \SyncForrestSync\multibuild\v1.1\assets 
+#   create a folder called 'movies' in \SyncForrestSync\multibuild\v1.2\assets 
 #   paste the movies downloaded into the newly created 'movies' folder
 
 # 7. run experiment by typing in command prompt
-cd pathToExperimentFolder\SyncForrestSync\multibuild\v1.1
+cd pathToExperimentFolder\SyncForrestSync\multibuild\v1.2
 python main.py
